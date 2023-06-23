@@ -20,18 +20,19 @@ int ch;
 char m;
 numberofstudentsadded=0;
 while(1)
-{  
-printf("1.Add student \n");
-printf ("2.Edit student \n");
-printf("3.Search student\n");
-printf ("4.Delete student \n");
-printf ("5.list of all students \n");
-printf ("6.exit\n");
-printf("Enter your choice (1-6)");
-scanf("%d",&ch);
-fflush(stdin);
-  if(ch==1)
-     {
+ {  
+ printf("1.Add student \n");
+ printf ("2.Edit student \n");
+ printf("3.Search student\n");
+ printf ("4.Delete student \n");
+ printf ("5.list of all students \n");
+ printf ("6.exit\n");
+ printf("Enter your choice (1-6)");
+ scanf("%d",&ch);
+ fflush(stdin);
+  
+if(ch==1)
+   {
      if(numberofstudentsadded<100)
         {
          add();
@@ -41,51 +42,52 @@ fflush(stdin);
           getchar();
           fflush(stdin);
          }
-     }
-     else if(ch==5)
-         {
+   }
+else if(ch==5)
+   {
           if(numberofstudentsadded>0)
-	   list();
-           else
-	   printf("No students added yet,press any key to continue...");
-	   m=getchar();
-	   fflush(stdin);
-     }
-       else if(ch==3)
-       {
-       	 if(numberofstudentsadded>0)
+    	  list();
+          else
+	      printf("No students added yet,press any key to continue...");
+	      m=getchar();
+	      fflush(stdin);
+   }
+else if(ch==3)
+   {
+    if(numberofstudentsadded>0)
        	 search();
        	 else printf("No student added yet,press any key to continue....");
        	 m=getchar();
        	 fflush(stdin);       	
-       }
-       else if(ch==4)
-       {
-   	  if(numberofstudentsadded>0)
-	   	    deletes();
-	  else
-	  {
-		  
-	  printf("NO student added yet , press any key to continue....");
-	  m=getchar();
-	  fflush(stdin);		
-	      }
+   }
+   
+else if(ch==4)
+   {
+       if(numberofstudentsadded>0)
+ 	    deletes();
+	   else
+	   {	  
+	     printf("NO student added yet , press any key to continue....");
+	     m=getchar();
+	     fflush(stdin);		
 	   }
+   }
 	   
-       else if(ch==2)
-        {
-        	  if(numberofstudentsadded>0)
-        	         edits();
-        	  else
-        	  	 printf("No students added yet,press any key to continue...");
-			 m=getchar();
-			 fflush(stdin);
-		 }
-       else if(ch==6)
+else if(ch==2)
+   {
+      if(numberofstudentsadded>0)
+        edits();
+      else
+       	 printf("No students added yet,press any key to continue...");
+		 m=getchar();
+	     fflush(stdin);
+   }
+   
+else if(ch==6)
        break;
-       else{
-       	printf("Please enter valid input\n");
-	   }    
+else{
+   	   printf("Please enter valid input\n");
+	}    
  }
  return 0;
 }
@@ -103,98 +105,98 @@ printf("Enter roll number:");
 scanf("%d",&rl);
 fflush(stdin);
 if(rl<101 || rl>200)
- {
-   printf("Invalid roll \n");
-   return;
- }
-for(e=0;e<numberofstudentsadded;e++)
-{
-  if(s[e].rollno==rl)
-   {
-     printf ("roll number is already allocate to %s",s[e].name);
-    return;
-    }
-}
-printf ("Enter name:");
-fgets(nm,25,stdin);
-fflush (stdin);
-printf ("Save (Y/N)");
-scanf ("%c",&m);
-fflush(stdin);
-if(m!='Y' && m!='y')
   {
-   printf ("Student not added, Press any key to continue ");
-   m=getchar ();
-   fflush (stdin);
-   return;
-   }
- s[numberofstudentsadded].rollno=rl;
- strcpy(s[numberofstudentsadded].name,nm);
- printf("Student added\n");
- numberofstudentsadded++;
-printf("Press any key to continue :");
-m=getchar();
-printf("\n");
- }
- 
- void edits()
- { 
-char nm[25],m;
-int rl, found,e;
- printf("Edit module\n ");
- printf ("-----------\n");
- printf("Enter roll number to edit :");
- scanf ("%d",&rl);
- fflush(stdin);
- 
- if(rl<101 || rl>200)
- { 
-  printf("Invalid roll number, press any key to continue :");
-  m=getchar();
-  fflush(stdin);
-return;
- }
-
- for(e=0;e<numberofstudentsadded;e++)
-    {
-      if(rl==s[e].rollno)
+     printf("Invalid roll \n");
+     return;
+  }
+   for(e=0;e<numberofstudentsadded;e++)
+     {
+      if(s[e].rollno==rl)
        {
-          found=1;
-          break;
-         
+       printf ("roll number is already allocate to %s",s[e].name);
+       return;
        }
      }
-    if(found==0)
+   printf ("Enter name:");
+   fgets(nm,25,stdin);
+   fflush (stdin);
+   printf ("Save (Y/N)");
+   scanf ("%c",&m);
+   fflush(stdin);
+   if(m!='Y' && m!='y')
     {
-       printf("roll number not found\n");
-       printf("Press any key to continue:\n");        
-       return;
+        printf ("Student not added, Press any key to continue ");
+        m=getchar ();
+        fflush (stdin);
+        return;
+    }
+    s[numberofstudentsadded].rollno=rl;
+    strcpy(s[numberofstudentsadded].name,nm);
+    printf("Student added\n");
+    numberofstudentsadded++;
+    printf("Press any key to continue :");
+    m=getchar();
+    printf("\n");
+  }
+ 
+void edits()
+      { 
+       char nm[25],m;
+       int rl, found,e;
+       printf("Edit module\n ");
+       printf ("-----------\n");
+       printf("Enter roll number to edit :");
+       scanf ("%d",&rl);
+       fflush(stdin);
+ 
+    if(rl<101 || rl>200)
+    {   
+      printf("Invalid roll number, press any key to continue :");
+      m=getchar();
+      fflush(stdin);
+      return;
+    }   
+
+     for(e=0;e<numberofstudentsadded;e++)
+     {
+       if(rl==s[e].rollno)
+        {
+           found=1;
+           break;
+         
+          }
      }
-    else{
-          printf("Roll number is allocated to %s",s[e].name);
-          printf("Edit (Y/N)\n");
-          m=getchar();
-          fflush(stdin);
+       if(found==0)
+       {
+           printf("roll number not found\n");
+           printf("Press any key to continue:\n");        
+           return;
+       }
+     else{
+           printf("Roll number is allocated to %s",s[e].name);
+           printf("Edit (Y/N)\n");
+           m=getchar();
+           fflush(stdin);
          if(m!='Y' && m!='y')
-         {
-           printf ("Student not edited, Press any key to continue ");
-           m=getchar ();
-          fflush (stdin);
-          return;
-         }
-  printf("Enter new name :");
-  fgets(nm,25,stdin);
-  fflush(stdin);
-  strcpy(s[e].name,nm);
-  printf ("Student updated successfully , ");
-  printf("Press any key to continue");
-  m=getchar();
- }
+           {
+               printf ("Student not edited, Press any key to continue ");
+               m=getchar ();
+               fflush (stdin);
+               return;
+           }
+         printf("Enter new name :");
+         fgets(nm,25,stdin);
+         fflush(stdin);
+         strcpy(s[e].name,nm);
+         printf ("Student updated successfully , ");
+         printf("Press any key to continue");
+         m=getchar();
+   }
 }
 
 void list()
 {
-	char m;
+char m;
 int e;
 printf("list module\n");
 printf("list of all students\n");
@@ -228,7 +230,7 @@ if(rl<101 || rl>200)
   printf("Invalid roll number, press any key to continue \n");
   m=getchar ();
   fflush (stdin);
-return;
+  return;
  }
 
 for(e=0;e<numberofstudentsadded;e++)
@@ -265,14 +267,14 @@ void deletes()
     found=0;
      fflush(stdin);
        if(rl<101 || rl>200)
-     { 
-      printf("Invalid roll number, press any key to continue \n");
-      m=getchar();
-      fflush(stdin);
-      return;
-     }
- for(e=0;e<numberofstudentsadded;e++)
-  {
+       { 
+         printf("Invalid roll number, press any key to continue \n");
+         m=getchar();
+         fflush(stdin);
+         return;
+       }
+  for(e=0;e<numberofstudentsadded;e++)
+   {
     if(rl==s[e].rollno)
     {
      found=1;
@@ -297,17 +299,17 @@ void deletes()
         	printf("Student not deleted......");
         	printf("press any key to continue....");
         	return;
-		}
-        else{
-         ep=numberofstudentsadded-2;
-         while(e<=ep)
-         {
-        	s[e].rollno=s[e+1].rollno;
-        	strcpy(s[e].name,s[e+1].name);
-        	e++;
-		 }
-		 numberofstudentsadded--;
-		 printf("Student deleted successfully.....\npress any key to continue....");
+        }
+       else{
+            ep=numberofstudentsadded-2;
+          while(e<=ep)
+            {
+            	s[e].rollno=s[e+1].rollno;
+            	strcpy(s[e].name,s[e+1].name);
+            	e++;
+		    }
+		    numberofstudentsadded--;
+		    printf("Student deleted successfully.....\npress any key to continue....");
 		   } 
        }
 }
