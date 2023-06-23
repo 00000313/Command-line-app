@@ -280,7 +280,7 @@ void deletes()
      found=1;
      break;
     }
-  }
+   }
     if(found==0)
     {
         printf("roll no not found , press any key to continue.....\n");
@@ -307,9 +307,9 @@ void deletes()
             	s[e].rollno=s[e+1].rollno;
             	strcpy(s[e].name,s[e+1].name);
             	e++;
-		    }
+            }
 		    numberofstudentsadded--;
 		    printf("Student deleted successfully.....\npress any key to continue....");
-		   } 
-       }
+           } 
+   }
 }
